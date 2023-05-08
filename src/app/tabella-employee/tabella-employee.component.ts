@@ -4,7 +4,7 @@ import { ServerResponse } from 'http';
 import { DataRestClientService } from '../data-rest-client.service';
 import { DataObject, Employee, EMPTY_EMPLOYEE  } from '../types/Employee';
 
-const URL: string = "http://localhost:8080/employees";
+const URL: string = "http://localhost:8080/index.php";
 
 @Component({
   selector: 'app-tabella-employee',
@@ -32,11 +32,7 @@ export class TabellaEmployeeComponent implements OnInit {
 
   loadData(url:string, page?: number): void{
     this.restClient.getDataRows(url, page).subscribe(
-      ServerResponse => {
-        this.pageNumber = ServerResponse.page.number;
-        this.data = ServerResponse,
-        this.dataSource.data = this.data._embedded.employees
-      }
+      
     )
   }
   deleteRow(elementID: number){
